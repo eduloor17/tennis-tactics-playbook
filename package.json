@@ -1,6 +1,6 @@
 {
   "name": "tennis-tactics-playbook",
-  "homepage":"https://github.com/eduloor17/tennis-tactics-playbook",
+  "homepage": "https://eduloor17.github.io/tennis-tactics-playbook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
