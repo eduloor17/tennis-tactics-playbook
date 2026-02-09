@@ -73,83 +73,140 @@ function App() {
   return (
     <div className="app-wrapper">
       <style>{`
-        .app-wrapper { display: flex; height: 100vh; background-color: #121212; color: white; font-family: system-ui; overflow: hidden; }
-        .sidebar { width: 300px; background-color: #1e272e; padding: 15px; overflow-y: auto; border-right: 1px solid #333; display: flex; flex-direction: column; }
-        .main-content { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 10px; overflow-y: auto; }
-        
-        /* SCROLL HORIZONTAL DE JUGADAS */
-        .play-list { display: flex; flex-direction: column; gap: 5px; }
+        .app-wrapper {
+          display: flex;
+          height: 100vh;
+          background-color: #121212;
+          color: white;
+          font-family: system-ui;
+        }
+        .sidebar {
+          width: 320px;
+          background-color: #1e272e;
+          padding: 20px;
+          overflow-y: auto;
+          border-right: 1px solid #333;
+          display: flex;
+          flex-direction: column;
+        }
+        .main-content {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          padding: 10px;
+        }
+        .play-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-bottom: 20px;
+        }
+        .canvas-container {
+          transform-origin: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 
+        /* --- OPTIMIZACIÓN MÓVIL --- */
         @media (max-width: 768px) {
           .app-wrapper { flex-direction: column; }
-          .sidebar { width: 100%; height: auto; max-height: 220px; padding: 10px; border-right: none; border-bottom: 1px solid #333; overflow-y: visible; }
-          .play-list { flex-direction: row; overflow-x: auto; padding: 5px 0; -webkit-overflow-scrolling: touch; }
-          .play-btn-mobile { min-width: 120px; font-size: 11px !important; padding: 6px !important; white-space: nowrap; }
-          .tool-grid { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
-          .tool-btn-mobile { padding: 6px 10px !important; font-size: 10px !important; flex: 1; min-width: 80px; }
-          .canvas-container { transform: scale(0.6); margin: -100px 0; }
-          h2 { font-size: 16px !important; margin: 5px 0 !important; }
+          .sidebar {
+            width: 100%;
+            height: auto;
+            max-height: 40vh; /* Reducido un poco para dar aire a la cancha */
+            padding: 12px;
+            border-right: none;
+            border-bottom: 1px solid #333;
+          }
+          .play-list {
+            flex-direction: row;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            gap: 6px;
+          }
+          .play-btn-mobile {
+            min-width: 130px; /* Ancho justo para que se lea el número y nombre */
+            padding: 8px !important;
+            font-size: 11px !important; /* TEXTO LEGIBLE 11px */
+            white-space: nowrap;
+          }
+          .canvas-container {
+            transform: scale(0.65); 
+            margin: -90px 0; 
+          }
+          .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+          }
+          h2 { font-size: 18px !important; margin-bottom: 8px !important; }
         }
       `}</style>
 
-      {/* HEADER / SIDEBAR COMPACTO */}
+      {/* SIDEBAR */}
       <div className="sidebar">
-        <h2 style={{ color: '#3498db', fontSize: '20px', textAlign: 'center', marginBottom: '10px' }}>TennisTactic Pro</h2>
+        <h2 style={{ color: '#3498db', fontSize: '22px', textAlign: 'center', marginBottom: '15px' }}>TennisTactic Pro</h2>
         
-        {/* Selector Singles/Doubles */}
-        <div style={{ display: 'flex', gap: '5px', marginBottom: '10px' }}>
+        <div style={{ display: 'flex', gap: '5px', marginBottom: '15px' }}>
           <button onClick={() => { setView('singles'); handlePlaySelect(PLAYBOOKS.singles[0]); }} style={view === 'singles' ? tabActive : tabInactive}>Singles</button>
           <button onClick={() => { setView('doubles'); handlePlaySelect(PLAYBOOKS.doubles[0]); }} style={view === 'doubles' ? tabActive : tabInactive}>Doubles</button>
         </div>
 
-        {/* Lista de Jugadas (Scroll horizontal en móvil) */}
         <div className="play-list">
           {PLAYBOOKS[view].map((play, i) => (
             <button 
               key={i} 
               className="play-btn-mobile"
               onClick={() => handlePlaySelect(play)} 
-              style={{...playBtn, borderLeft: currentScenario.name === play.name ? '3px solid #3498db' : '3px solid transparent', backgroundColor: currentScenario.name === play.name ? '#2c3e50' : 'transparent'}}
+              style={{...playBtn, borderLeft: currentScenario.name === play.name ? '4px solid #3498db' : '4px solid transparent', backgroundColor: currentScenario.name === play.name ? '#2c3e50' : 'transparent'}}
             >
               {i + 1}. {play.name}
             </button>
           ))}
         </div>
 
-        {/* Herramientas Compactas */}
-        <div className="tool-section" style={{ borderTop: '1px solid #444', marginTop: '10px', paddingTop: '10px' }}>
-          <div style={{ display: 'flex', gap: '8px', marginBottom: '10px', justifyContent: 'center' }}>
+        <div className="tool-section" style={{ borderTop: '1px solid #444', paddingTop: '15px' }}>
+          <div style={{ display: 'flex', gap: '10px', marginBottom: '12px', justifyContent: 'center', alignItems: 'center' }}>
             {['#f1c40f', '#e74c3c', '#ffffff'].map(c => (
-              <div key={c} onClick={() => setDrawColor(c)} style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: c, border: drawColor === c ? '2px solid #3498db' : '1px solid white', cursor: 'pointer' }} />
+              <div key={c} onClick={() => setDrawColor(c)} style={{ width: '25px', height: '25px', borderRadius: '50%', backgroundColor: c, border: drawColor === c ? '3px solid #3498db' : '2px solid white', cursor: 'pointer' }} />
             ))}
           </div>
           
           <div className="tool-grid">
-            <button className="tool-btn-mobile" onClick={() => setIsDrawing(!isDrawing)} style={{...toolBtn, backgroundColor: isDrawing ? '#e74c3c' : '#27ae60'}}>{isDrawing ? "🔒 LOCK" : "✏️ DRAW"}</button>
-            <button className="tool-btn-mobile" onClick={resetPositions} style={{...toolBtn, backgroundColor: '#7f8c8d'}}>🔄 RESET</button>
-            <button className="tool-btn-mobile" onClick={handleExport} style={{...toolBtn, backgroundColor: '#3498db'}}>📸 PNG</button>
-            <button className="tool-btn-mobile" onClick={() => setUserArrows([])} style={{...toolBtn, background: 'none', color: '#e74c3c', border: '1px solid #e74c3c'}}>🗑️ CLR</button>
+            <button onClick={() => setIsDrawing(!isDrawing)} style={{...toolBtn, backgroundColor: isDrawing ? '#e74c3c' : '#27ae60'}}>{isDrawing ? "🔒 LOCK" : "✏️ DRAW"}</button>
+            <button onClick={resetPositions} style={{...toolBtn, backgroundColor: '#7f8c8d'}}>🔄 RESET</button>
+            <button onClick={handleExport} style={{...toolBtn, backgroundColor: '#3498db'}}>📸 EXPORT</button>
+            <button onClick={() => setUserArrows([])} style={{...toolBtn, background: 'none', color: '#e74c3c', border: '1px solid #e74c3c', fontSize: '10px'}}>🗑️ CLEAR</button>
           </div>
         </div>
       </div>
 
-      {/* ÁREA DE LA CANCHA */}
+      {/* MAIN CONTENT */}
       <div className="main-content">
-        <div style={{ background: '#2c3e50', padding: '4px 15px', borderRadius: '15px', marginBottom: '5px', textAlign: 'center' }}>
-          <h2 style={{ margin: 0, fontSize: '13px' }}>{currentScenario.name}</h2>
+        <div style={{ background: '#2c3e50', padding: '6px 20px', borderRadius: '20px', marginBottom: '8px', textAlign: 'center' }}>
+          <h2 style={{ margin: 0, fontSize: '14px' }}>{currentScenario.name}</h2>
         </div>
         
         <div className="canvas-container">
           <Stage 
-            width={400} height={600} 
+            width={400} 
+            height={600} 
             ref={stageRef} 
-            onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={() => isDrawingNow.current = false}
-            onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={() => isDrawingNow.current = false}
+            onMouseDown={handleStart} 
+            onMouseMove={handleMove} 
+            onMouseUp={() => isDrawingNow.current = false}
+            onTouchStart={handleStart}
+            onTouchMove={handleMove}
+            onTouchEnd={() => isDrawingNow.current = false}
           >
             <Layer>
               <CourtBackground />
               {currentScenario.lines?.map((l, i) => (
-                <Arrow key={`t-${i}`} points={l.points} stroke={l.stroke} fill={l.stroke} strokeWidth={2} dash={l.dash} pointerLength={6} pointerWidth={6} opacity={0.4} />
+                <Arrow key={`t-${i}`} points={l.points} stroke={l.stroke} fill={l.stroke} strokeWidth={2} dash={l.dash} pointerLength={6} pointerWidth={6} opacity={0.5} />
               ))}
               {userArrows.map((arr, i) => (
                 <Arrow key={`u-${i}`} points={arr.points} stroke={arr.color} fill={arr.color} strokeWidth={3} />
@@ -167,18 +224,19 @@ function App() {
           </Stage>
         </div>
 
-        <div style={{...tipBox, width: '95%', maxWidth: '400px'}}>
-          <small><strong>COACH:</strong> {currentScenario.tip}</small>
+        <div style={{...tipBox, width: '92%', maxWidth: '380px'}}>
+          <span style={{fontSize: '11px'}}><strong>COACH:</strong> {currentScenario.tip}</span>
         </div>
       </div>
     </div>
   );
 }
 
-const tabActive = { flex: 1, padding: '8px', backgroundColor: '#3498db', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '11px' };
-const tabInactive = { flex: 1, padding: '8px', backgroundColor: '#485460', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '11px' };
-const playBtn = { width: '100%', textAlign: 'left', padding: '10px', color: 'white', border: 'none', cursor: 'pointer', fontSize: '12px', borderRadius: '4px' };
-const toolBtn = { padding: '10px', marginBottom: '0', border: 'none', borderRadius: '6px', color: 'white', fontWeight: 'bold', cursor: 'pointer' };
-const tipBox = { marginTop: '5px', padding: '8px', backgroundColor: '#1e272e', borderRadius: '8px', borderLeft: '4px solid #3498db', fontSize: '11px' };
+// Estilos constantes (Desktop y base)
+const tabActive = { flex: 1, padding: '10px', backgroundColor: '#3498db', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' };
+const tabInactive = { flex: 1, padding: '10px', backgroundColor: '#485460', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '12px' };
+const playBtn = { width: '100%', textAlign: 'left', padding: '12px', color: 'white', border: 'none', cursor: 'pointer', fontSize: '13px', borderRadius: '4px' };
+const toolBtn = { width: '100%', padding: '10px', marginBottom: '2px', border: 'none', borderRadius: '6px', color: 'white', fontWeight: 'bold', cursor: 'pointer', fontSize: '11px' };
+const tipBox = { marginTop: '8px', padding: '10px', backgroundColor: '#1e272e', borderRadius: '10px', borderLeft: '5px solid #3498db' };
 
 export default App;
