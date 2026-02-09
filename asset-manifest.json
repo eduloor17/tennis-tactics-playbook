@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/eduloor17/tennis-tactics-playbook/static/css/main.e6c13ad2.css",
-    "main.js": "/eduloor17/tennis-tactics-playbook/static/js/main.2fdffb8f.js",
-    "static/js/453.423fef15.chunk.js": "/eduloor17/tennis-tactics-playbook/static/js/453.423fef15.chunk.js",
-    "index.html": "/eduloor17/tennis-tactics-playbook/index.html",
-    "main.e6c13ad2.css.map": "/eduloor17/tennis-tactics-playbook/static/css/main.e6c13ad2.css.map",
-    "main.2fdffb8f.js.map": "/eduloor17/tennis-tactics-playbook/static/js/main.2fdffb8f.js.map",
-    "453.423fef15.chunk.js.map": "/eduloor17/tennis-tactics-playbook/static/js/453.423fef15.chunk.js.map"
+    "main.css": "/tennis-tactics-playbook/static/css/main.e6c13ad2.css",
+    "main.js": "/tennis-tactics-playbook/static/js/main.641e0a22.js",
+    "static/js/453.423fef15.chunk.js": "/tennis-tactics-playbook/static/js/453.423fef15.chunk.js",
+    "index.html": "/tennis-tactics-playbook/index.html",
+    "main.e6c13ad2.css.map": "/tennis-tactics-playbook/static/css/main.e6c13ad2.css.map",
+    "main.641e0a22.js.map": "/tennis-tactics-playbook/static/js/main.641e0a22.js.map",
+    "453.423fef15.chunk.js.map": "/tennis-tactics-playbook/static/js/453.423fef15.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.2fdffb8f.js"
+    "static/js/main.641e0a22.js"
   ]
 }
