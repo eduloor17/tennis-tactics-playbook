@@ -55,14 +55,14 @@ function App() {
 
   const resetPositions = () => setPlayers(currentScenario.positions);
 
-  const handleMouseDown = (e) => {
+  const handleStart = (e) => {
     if (!isDrawing) return;
     isDrawingNow.current = true;
     const pos = e.target.getStage().getPointerPosition();
     setUserArrows([...userArrows, { points: [pos.x, pos.y, pos.x, pos.y], color: drawColor }]);
   };
 
-  const handleMouseMove = (e) => {
+  const handleMove = (e) => {
     if (!isDrawingNow.current) return;
     const point = e.target.getStage().getPointerPosition();
     let lastArrow = userArrows[userArrows.length - 1];
@@ -71,76 +71,170 @@ function App() {
   };
 
   return (
-    <div style={{ display: 'flex', height: '100vh', backgroundColor: '#121212', color: 'white', fontFamily: 'system-ui' }}>
-      
+    <div className="app-wrapper">
+      <style>{`
+        .app-wrapper {
+          display: flex;
+          height: 100vh;
+          background-color: #121212;
+          color: white;
+          font-family: system-ui;
+        }
+        .sidebar {
+          width: 320px;
+          background-color: #1e272e;
+          padding: 20px;
+          overflow-y: auto;
+          border-right: 1px solid #333;
+          display: flex;
+          flex-direction: column;
+        }
+        .main-content {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          padding: 10px;
+        }
+        .play-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-bottom: 20px;
+        }
+        .canvas-container {
+          transform-origin: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        @media (max-width: 768px) {
+          .app-wrapper {
+            flex-direction: column;
+          }
+          .sidebar {
+            width: 100%;
+            height: auto;
+            max-height: 45vh;
+            border-right: none;
+            border-bottom: 1px solid #333;
+            padding: 15px;
+          }
+          .play-list {
+            flex-direction: row;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            max-height: none;
+          }
+          .play-btn-mobile {
+            min-width: 140px;
+            white-space: nowrap;
+          }
+          .canvas-container {
+            transform: scale(0.65); /* Ajuste dinámico para móviles */
+            margin: -80px 0; /* Compensa el espacio del escalado */
+          }
+          .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+          }
+        }
+      `}</style>
+
       {/* SIDEBAR */}
-      <div style={{ width: '320px', backgroundColor: '#1e272e', padding: '20px', overflowY: 'auto', borderRight: '1px solid #333' }}>
-        <h2 style={{ color: '#3498db', fontSize: '24px', textAlign: 'center' }}>TennisIQ Pro</h2>
+      <div className="sidebar">
+        <h2 style={{ color: '#3498db', fontSize: '22px', textAlign: 'center', marginBottom: '15px' }}>TennisTactic Pro</h2>
         
-        <div style={{ display: 'flex', gap: '5px', marginBottom: '20px' }}>
+        <div style={{ display: 'flex', gap: '5px', marginBottom: '15px' }}>
           <button onClick={() => { setView('singles'); handlePlaySelect(PLAYBOOKS.singles[0]); }} style={view === 'singles' ? tabActive : tabInactive}>Singles</button>
           <button onClick={() => { setView('doubles'); handlePlaySelect(PLAYBOOKS.doubles[0]); }} style={view === 'doubles' ? tabActive : tabInactive}>Doubles</button>
         </div>
 
-        <div style={{ maxHeight: '40vh', overflowY: 'auto', marginBottom: '20px' }}>
+        <div className="play-list">
           {PLAYBOOKS[view].map((play, i) => (
-            <button key={i} onClick={() => handlePlaySelect(play)} style={{...playBtn, borderLeft: currentScenario.name === play.name ? '4px solid #3498db' : '4px solid transparent', backgroundColor: currentScenario.name === play.name ? '#2c3e50' : 'transparent'}}>
-              {play.name}
+            <button 
+              key={i} 
+              className="play-btn-mobile"
+              onClick={() => handlePlaySelect(play)} 
+              style={{...playBtn, borderLeft: currentScenario.name === play.name ? '4px solid #3498db' : '4px solid transparent', backgroundColor: currentScenario.name === play.name ? '#2c3e50' : 'transparent'}}
+            >
+              {i + 1}. {play.name}
             </button>
           ))}
         </div>
 
-        <div style={{ borderTop: '1px solid #444', paddingTop: '15px' }}>
-          <div style={{ display: 'flex', gap: '5px', marginBottom: '10px' }}>
+        <div className="tool-section" style={{ borderTop: '1px solid #444', paddingTop: '15px' }}>
+          <div style={{ display: 'flex', gap: '10px', marginBottom: '15px', justifyContent: 'center', alignItems: 'center' }}>
             {['#f1c40f', '#e74c3c', '#ffffff'].map(c => (
-              <div key={c} onClick={() => setDrawColor(c)} style={{ width: '25px', height: '25px', borderRadius: '50%', backgroundColor: c, border: drawColor === c ? '2px solid white' : 'none', cursor: 'pointer' }} />
+              <div key={c} onClick={() => setDrawColor(c)} style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: c, border: drawColor === c ? '3px solid #3498db' : '2px solid white', cursor: 'pointer' }} />
             ))}
-            <span style={{ fontSize: '12px', marginLeft: '10px' }}>Pencil Color</span>
           </div>
           
-          <button onClick={() => setIsDrawing(!isDrawing)} style={{...toolBtn, backgroundColor: isDrawing ? '#e74c3c' : '#27ae60'}}>{isDrawing ? "🔒 STOP DRAWING" : "✏️ START DRAWING"}</button>
-          <button onClick={resetPositions} style={{...toolBtn, backgroundColor: '#7f8c8d'}}>🔄 RESET PLAYERS</button>
-          <button onClick={handleExport} style={{...toolBtn, backgroundColor: '#3498db'}}>📸 EXPORT PNG</button>
-          <button onClick={() => setUserArrows([])} style={{...toolBtn, background: 'none', color: '#e74c3c', border: '1px solid #e74c3c'}}>🗑️ CLEAR BOARD</button>
+          <div className="tool-grid">
+            <button onClick={() => setIsDrawing(!isDrawing)} style={{...toolBtn, backgroundColor: isDrawing ? '#e74c3c' : '#27ae60'}}>{isDrawing ? "🔒 LOCK" : "✏️ DRAW"}</button>
+            <button onClick={resetPositions} style={{...toolBtn, backgroundColor: '#7f8c8d'}}>🔄 RESET</button>
+            <button onClick={handleExport} style={{...toolBtn, backgroundColor: '#3498db'}}>📸 EXPORT</button>
+            <button onClick={() => setUserArrows([])} style={{...toolBtn, background: 'none', color: '#e74c3c', border: '1px solid #e74c3c'}}>🗑️ CLEAR</button>
+          </div>
         </div>
       </div>
 
-      {/* MAIN COURT */}
-      <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ background: '#2c3e50', padding: '10px 30px', borderRadius: '30px', marginBottom: '15px', boxShadow: '0 4px 15px rgba(0,0,0,0.3)' }}>
-          <h2 style={{ margin: 0, fontSize: '18px' }}>{currentScenario.name}</h2>
+      {/* MAIN CONTENT */}
+      <div className="main-content">
+        <div style={{ background: '#2c3e50', padding: '8px 20px', borderRadius: '20px', marginBottom: '10px', textAlign: 'center' }}>
+          <h2 style={{ margin: 0, fontSize: '16px' }}>{currentScenario.name}</h2>
         </div>
         
-        <Stage width={400} height={600} ref={stageRef} onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={() => isDrawingNow.current = false}>
-          <Layer>
-            <CourtBackground />
-            {currentScenario.lines?.map((l, i) => (
-              <Arrow key={`t-${i}`} points={l.points} stroke={l.stroke} fill={l.stroke} strokeWidth={2} dash={l.dash} pointerLength={6} pointerWidth={6} opacity={0.5} />
-            ))}
-            {userArrows.map((arr, i) => (
-              <Arrow key={`u-${i}`} points={arr.points} stroke={arr.color} fill={arr.color} strokeWidth={3} />
-            ))}
-            {players.map((p) => (
-              <Group key={p.id} x={p.x} y={p.y} draggable={!isDrawing} onDragEnd={(e) => {
-                const updated = players.map(pl => pl.id === p.id ? { ...pl, x: e.target.x(), y: e.target.y() } : pl);
-                setPlayers(updated);
-              }}>
-                {p.id === 'ball' ? <Circle radius={8} fill="yellow" stroke="black" strokeWidth={1} /> : <PlayerIcon color={p.color} />}
-                {p.label && <Text text={p.label} y={15} x={-25} width={50} align="center" fill="white" fontSize={11} fontStyle="bold" />}
-              </Group>
-            ))}
-          </Layer>
-        </Stage>
-        <div style={tipBox}><strong>COACH ANALYSIS:</strong> {currentScenario.tip}</div>
+        <div className="canvas-container">
+          <Stage 
+            width={400} 
+            height={600} 
+            ref={stageRef} 
+            onMouseDown={handleStart} 
+            onMouseMove={handleMove} 
+            onMouseUp={() => isDrawingNow.current = false}
+            onTouchStart={handleStart}
+            onTouchMove={handleMove}
+            onTouchEnd={() => isDrawingNow.current = false}
+          >
+            <Layer>
+              <CourtBackground />
+              {currentScenario.lines?.map((l, i) => (
+                <Arrow key={`t-${i}`} points={l.points} stroke={l.stroke} fill={l.stroke} strokeWidth={2} dash={l.dash} pointerLength={6} pointerWidth={6} opacity={0.5} />
+              ))}
+              {userArrows.map((arr, i) => (
+                <Arrow key={`u-${i}`} points={arr.points} stroke={arr.color} fill={arr.color} strokeWidth={3} />
+              ))}
+              {players.map((p) => (
+                <Group key={p.id} x={p.x} y={p.y} draggable={!isDrawing} onDragEnd={(e) => {
+                  const updated = players.map(pl => pl.id === p.id ? { ...pl, x: e.target.x(), y: e.target.y() } : pl);
+                  setPlayers(updated);
+                }}>
+                  {p.id === 'ball' ? <Circle radius={8} fill="yellow" stroke="black" strokeWidth={1} /> : <PlayerIcon color={p.color} />}
+                  {p.label && <Text text={p.label} y={15} x={-25} width={50} align="center" fill="white" fontSize={11} fontStyle="bold" />}
+                </Group>
+              ))}
+            </Layer>
+          </Stage>
+        </div>
+
+        <div style={{...tipBox, width: '90%', maxWidth: '380px'}}>
+          <strong>COACH:</strong> {currentScenario.tip}
+        </div>
       </div>
     </div>
   );
 }
 
+// Estilos constantes
 const tabActive = { flex: 1, padding: '10px', backgroundColor: '#3498db', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' };
 const tabInactive = { flex: 1, padding: '10px', backgroundColor: '#485460', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' };
-const playBtn = { width: '100%', textAlign: 'left', padding: '12px', color: 'white', border: 'none', cursor: 'pointer', fontSize: '13px', transition: '0.2s' };
-const toolBtn = { width: '100%', padding: '12px', marginBottom: '8px', border: 'none', borderRadius: '6px', color: 'white', fontWeight: 'bold', cursor: 'pointer', fontSize: '12px' };
-const tipBox = { marginTop: '20px', padding: '15px', backgroundColor: '#1e272e', borderRadius: '10px', width: '380px', borderLeft: '5px solid #3498db', fontSize: '14px', boxShadow: '0 4px 10px rgba(0,0,0,0.3)' };
+const playBtn = { width: '100%', textAlign: 'left', padding: '12px', color: 'white', border: 'none', cursor: 'pointer', fontSize: '13px', borderRadius: '4px' };
+const toolBtn = { width: '100%', padding: '12px', marginBottom: '4px', border: 'none', borderRadius: '6px', color: 'white', fontWeight: 'bold', cursor: 'pointer', fontSize: '11px' };
+const tipBox = { marginTop: '10px', padding: '12px', backgroundColor: '#1e272e', borderRadius: '10px', borderLeft: '5px solid #3498db', fontSize: '13px' };
 
 export default App;
