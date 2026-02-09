@@ -1,0 +1,197 @@
+[
+  {
+    "name": "1. Moonball Defense",
+    "tip": "Step into the court and hit early! Don't let the ball bounce high and push you back.",
+    "positions": [
+      {"id":"p1", "x":200, "y":420, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":200, "y":60, "color":"#ff4b2b", "label":"PUSHER"},
+      {"id":"ball", "x":200, "y":180, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [200, 80, 200, 410], "stroke": "yellow", "dash": [0,0]},
+      {"points": [200, 540, 200, 430], "stroke": "#00d2ff", "dash": [5,5]}
+    ]
+  },
+  {
+    "name": "2. Inside-Out Forehand",
+    "tip": "Run around your backhand to dominate with your forehand. Aim for the opponent's backhand corner.",
+    "positions": [
+      {"id":"p1", "x":140, "y":510, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":300, "y":100, "color":"#ff4b2b", "label":"OPPONENT"},
+      {"id":"ball", "x":150, "y":480, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [200, 510, 150, 510], "stroke": "#00d2ff", "dash": [5,5]},
+      {"points": [150, 480, 300, 120], "stroke": "yellow", "dash": [0,0]}
+    ]
+  },
+  {
+    "name": "3. The Battering Ram",
+    "tip": "Hit 3+ shots to the same deep corner to break their rhythm before switching direction.",
+    "positions": [
+      {"id":"p1", "x":280, "y":530, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":310, "y":100, "color":"#ff4b2b", "label":"DEFENDER"},
+      {"id":"ball", "x":300, "y":150, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [280, 500, 310, 120], "stroke": "yellow", "dash": [0,0]},
+      {"points": [250, 530, 280, 530], "stroke": "#00d2ff", "dash": [5,5]}
+    ]
+  },
+  {
+    "name": "4. Short Cross-Court Angle",
+    "tip": "Pull your opponent off the court with a short, angled shot. Accuracy over power.",
+    "positions": [
+      {"id":"p1", "x":360, "y":450, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":200, "y":100, "color":"#ff4b2b", "label":"OPPONENT"},
+      {"id":"ball", "x":340, "y":430, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [340, 430, 80, 180], "stroke": "yellow", "dash": [0,0]},
+      {"points": [200, 100, 100, 160], "stroke": "#ff4b2b", "dash": [5,5]}
+    ]
+  },
+  {
+    "name": "5. Serve and Volley",
+    "tip": "Follow your serve to the net. Keep the first volley deep to maintain pressure.",
+    "positions": [
+      {"id":"p1", "x":200, "y":350, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":150, "y":80, "color":"#ff4b2b", "label":"RETURNER"},
+      {"id":"ball", "x":180, "y":120, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [200, 550, 200, 360], "stroke": "#00d2ff", "dash": [5,5]},
+      {"points": [200, 340, 160, 100], "stroke": "yellow", "dash": [0,0]}
+    ]
+  },
+  {
+    "name": "6. Drop Shot and Lob",
+    "tip": "Pull them in with a drop shot, then go over their head. Make them move vertically.",
+    "positions": [
+      {"id":"p1", "x":200, "y":450, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":200, "y":320, "color":"#ff4b2b", "label":"OPPONENT"},
+      {"id":"ball", "x":200, "y":60, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [200, 440, 200, 310], "stroke": "yellow", "dash": [2,2]},
+      {"points": [200, 310, 200, 80], "stroke": "yellow", "dash": [0,0]}
+    ]
+  },
+  {
+    "name": "7. Wide Serve (Deuce)",
+    "tip": "Pull the returner out of the alley. Hit your next shot to the wide-open Ad court.",
+    "positions": [
+      {"id":"p1", "x":220, "y":550, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":380, "y":150, "color":"#ff4b2b", "label":"RETURNER"},
+      {"id":"ball", "x":100, "y":150, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [220, 550, 370, 160], "stroke": "yellow", "dash": [4,4]},
+      {"points": [370, 160, 110, 160], "stroke": "yellow", "dash": [0,0]}
+    ]
+  },
+  {
+    "name": "8. T-Serve (Ad)",
+    "tip": "Serve down the center T to jam the returner and take away their angles.",
+    "positions": [
+      {"id":"p1", "x":180, "y":550, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":180, "y":100, "color":"#ff4b2b", "label":"RETURNER"},
+      {"id":"ball", "x":200, "y":160, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [180, 550, 200, 170], "stroke": "yellow", "dash": [0,0]},
+      {"points": [200, 550, 200, 480], "stroke": "#00d2ff", "dash": [5,5]}
+    ]
+  },
+  {
+    "name": "9. Down-the-Line Approach",
+    "tip": "Hit your approach shot down the line. It's the safest way to close the net.",
+    "positions": [
+      {"id":"p1", "x":300, "y":350, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":280, "y":100, "color":"#ff4b2b", "label":"OPPONENT"},
+      {"id":"ball", "x":300, "y":150, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [300, 450, 300, 160], "stroke": "yellow", "dash": [0,0]},
+      {"points": [300, 450, 300, 360], "stroke": "#00d2ff", "dash": [5,5]}
+    ]
+  },
+  {
+    "name": "10. Defensive Slice",
+    "tip": "Use the slice to buy time and stay low. Recover to the center immediately.",
+    "positions": [
+      {"id":"p1", "x":380, "y":520, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":200, "y":150, "color":"#ff4b2b", "label":"OPPONENT"},
+      {"id":"ball", "x":200, "y":400, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [380, 520, 210, 410], "stroke": "yellow", "dash": [0,0]},
+      {"points": [380, 520, 210, 520], "stroke": "#00d2ff", "dash": [5,5]}
+    ]
+  },
+  {
+    "name": "11. Sneak Attack (SABR)",
+    "tip": "Move in during the opponent's second serve toss. Catch them by surprise.",
+    "positions": [
+      {"id":"p1", "x":200, "y":320, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":200, "y":50, "color":"#ff4b2b", "label":"SERVER"},
+      {"id":"ball", "x":200, "y":100, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [200, 550, 200, 330], "stroke": "#00d2ff", "dash": [5,5]},
+      {"points": [200, 320, 250, 100], "stroke": "yellow", "dash": [0,0]}
+    ]
+  },
+  {
+    "name": "12. Wrong-Footing",
+    "tip": "Hit the ball back to the same spot the opponent just vacated while they are running.",
+    "positions": [
+      {"id":"p1", "x":200, "y":500, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":120, "y":120, "color":"#ff4b2b", "label":"RUNNING"},
+      {"id":"ball", "x":320, "y":120, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [200, 480, 330, 120], "stroke": "yellow", "dash": [0,0]},
+      {"points": [200, 120, 130, 120], "stroke": "#ff4b2b", "dash": [5,5]}
+    ]
+  },
+  {
+    "name": "13. High Heavy Topspin",
+    "tip": "Push the opponent back with high clearance over the net and heavy spin.",
+    "positions": [
+      {"id":"p1", "x":200, "y":540, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":200, "y":60, "color":"#ff4b2b", "label":"OPPONENT"},
+      {"id":"ball", "x":200, "y":100, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [200, 530, 200, 110], "stroke": "yellow", "dash": [0,0]},
+      {"points": [200, 80, 200, 50], "stroke": "#ff4b2b", "dash": [3,3]}
+    ]
+  },
+  {
+    "name": "14. Counter-Puncher",
+    "tip": "Absorb the pace and redirect it cross-court. Wait for their mistake.",
+    "positions": [
+      {"id":"p1", "x":200, "y":560, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":200, "y":150, "color":"#ff4b2b", "label":"AGGRESSOR"},
+      {"id":"ball", "x":200, "y":450, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [200, 160, 200, 550], "stroke": "yellow", "dash": [4,4]},
+      {"points": [200, 550, 100, 200], "stroke": "yellow", "dash": [0,0]}
+    ]
+  },
+  {
+    "name": "15. Mid-Court Putaway",
+    "tip": "High to low swing. Don't over-hit, just find the corner on the short ball.",
+    "positions": [
+      {"id":"p1", "x":200, "y":280, "color":"#00d2ff", "label":"YOU"},
+      {"id":"p2", "x":300, "y":80, "color":"#ff4b2b", "label":"OPPONENT"},
+      {"id":"ball", "x":200, "y":220, "color":"yellow"}
+    ],
+    "lines": [
+      {"points": [200, 280, 310, 90], "stroke": "yellow", "dash": [0,0]},
+      {"points": [200, 350, 200, 290], "stroke": "#00d2ff", "dash": [5,5]}
+    ]
+  }
+]
