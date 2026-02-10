@@ -46,12 +46,36 @@ function App() {
   };
 
   const handleExport = () => {
-    const uri = stageRef.current.toDataURL();
+  const uri = stageRef.current.toDataURL();
+  
+  // Detectar si el usuario está en un dispositivo móvil
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    // En móviles: Abrimos la imagen en una pestaña nueva
+    const newWindow = window.open();
+    if (newWindow) {
+      newWindow.document.write(
+        `<body style="margin:0; background:#121212; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh;">` +
+        `<img src="${uri}" style="max-width:100%; border: 2px solid #3498db; border-radius:10px;" />` +
+        `<p style="color:white; font-family:sans-serif; margin-top:20px; text-align:center; padding: 0 20px;">` +
+        `☝️ <b>Mantén presionada la imagen</b> para guardarla en tu carrete.</p>` +
+        `<button onclick="window.close()" style="margin-top:20px; padding:10px 20px; background:#3498db; color:white; border:none; border-radius:5px;">Cerrar</button>` +
+        `</body>`
+      );
+    } else {
+      alert("Por favor, permite las ventanas emergentes (pop-ups) para ver la imagen.");
+    }
+  } else {
+    // En Mac/PC: Descarga directa clásica
     const link = document.createElement('a');
     link.download = `Tennis_Tactic.png`;
     link.href = uri;
+    document.body.appendChild(link);
     link.click();
-  };
+    document.body.removeChild(link);
+  }
+};
 
   const resetPositions = () => setPlayers(currentScenario.positions);
 
