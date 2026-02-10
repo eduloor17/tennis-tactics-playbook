@@ -48,26 +48,26 @@ function App() {
   const handleExport = () => {
   const uri = stageRef.current.toDataURL();
   
-  // Detectar si el usuario está en un dispositivo móvil
+  // Detect if the user is on a mobile device
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   if (isMobile) {
-    // En móviles: Abrimos la imagen en una pestaña nueva
+    // On Mobile: Open the image in a new tab for manual saving
     const newWindow = window.open();
     if (newWindow) {
       newWindow.document.write(
         `<body style="margin:0; background:#121212; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh;">` +
-        `<img src="${uri}" style="max-width:100%; border: 2px solid #3498db; border-radius:10px;" />` +
-        `<p style="color:white; font-family:sans-serif; margin-top:20px; text-align:center; padding: 0 20px;">` +
-        `☝️ <b>Mantén presionada la imagen</b> para guardarla en tu carrete.</p>` +
-        `<button onclick="window.close()" style="margin-top:20px; padding:10px 20px; background:#3498db; color:white; border:none; border-radius:5px;">Cerrar</button>` +
+        `<img src="${uri}" style="max-width:90%; border: 2px solid #3498db; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />` +
+        `<p style="color:white; font-family:system-ui, sans-serif; margin-top:20px; text-align:center; padding: 0 20px; line-height: 1.5;">` +
+        `☝️ <b>Long press the image</b><br>to save it to your Photos.</p>` +
+        `<button onclick="window.close()" style="margin-top:20px; padding:12px 25px; background:#3498db; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Close Preview</button>` +
         `</body>`
       );
     } else {
-      alert("Por favor, permite las ventanas emergentes (pop-ups) para ver la imagen.");
+      alert("Please allow pop-ups to view and save your tactic image.");
     }
   } else {
-    // En Mac/PC: Descarga directa clásica
+    // On Mac/PC: Standard direct download
     const link = document.createElement('a');
     link.download = `Tennis_Tactic.png`;
     link.href = uri;
