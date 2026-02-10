@@ -1,6 +1,6 @@
 [
   {
-    "name": "1. The Classic Poach",
+    "name": "The Classic Poach",
     "tip": "The net player (YOU) moves diagonally as the opponent hits the return to cut off the ball.",
     "positions": [
       {"id":"p1", "x":230, "y":530, "color":"#00d2ff", "label":"SERVER"},
@@ -15,7 +15,7 @@
     ]
   },
   {
-    "name": "2. I-Formation",
+    "name": "I-Formation",
     "tip": "Server and net player start on the center line to hide their intended movement from the returner.",
     "positions": [
       {"id":"p1", "x":200, "y":550, "color":"#00d2ff", "label":"SERVER"},
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "name": "3. Australian Formation",
+    "name": "Australian Formation",
     "tip": "Stay on the same side as the server to protect your partner's best serve direction.",
     "positions": [
       {"id":"p1", "x":130, "y":550, "color":"#00d2ff", "label":"SERVER"},
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "name": "4. Center T Attack",
+    "name": "Center T Attack",
     "tip": "Aim the serve at the 'T'. It narrows the returner's angles and sets up an easy poach.",
     "positions": [
       {"id":"p1", "x":205, "y":550, "color":"#00d2ff", "label":"SERVER"},
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "name": "5. Defensive Lob",
+    "name": "Defensive Lob",
     "tip": "Lob over the net player to reset the point when you are pulled wide.",
     "positions": [
       {"id":"p1", "x":360, "y":520, "color":"#00d2ff", "label":"YOU"},
@@ -75,7 +75,7 @@
     ]
   },
   {
-    "name": "6. The Pinch",
+    "name": "The Pinch",
     "tip": "Close in on the net when your partner hits a deep shot to pressure the opponent.",
     "positions": [
       {"id":"p1", "x":200, "y":520, "color":"#00d2ff", "label":"BASE"},
@@ -90,7 +90,7 @@
     ]
   },
   {
-    "name": "7. The J-Path",
+    "name": "The J-Path",
     "tip": "Don't move sideways to poach. Move forward THEN across in a 'J' shape.",
     "positions": [
       {"id":"p1", "x":200, "y":530, "color":"#00d2ff", "label":"SERVER"},
@@ -105,7 +105,7 @@
     ]
   },
   {
-    "name": "8. Alley Coverage",
+    "name": "Alley Coverage",
     "tip": "When the ball is wide, the net player must guard the 'tramline' (alley).",
     "positions": [
       {"id":"p1", "x":150, "y":520, "color":"#00d2ff", "label":"BASE"},
@@ -120,7 +120,7 @@
     ]
   },
   {
-    "name": "9. Both Back",
+    "name": "Both Back",
     "tip": "Neutralize a powerful server by starting both players at the baseline.",
     "positions": [
       {"id":"p1", "x":150, "y":540, "color":"#00d2ff", "label":"YOU"},
@@ -134,7 +134,7 @@
     ]
   },
   {
-    "name": "10. Both at Net",
+    "name": "Both at Net",
     "tip": "Apply maximum pressure. Both players close the net to finish the point.",
     "positions": [
       {"id":"p1", "x":150, "y":350, "color":"#00d2ff", "label":"YOU"},
@@ -149,7 +149,7 @@
     ]
   },
   {
-    "name": "11. Dipping Return",
+    "name": "Dipping Return",
     "tip": "Hit the return low to the feet of the opponent rushing the net.",
     "positions": [
       {"id":"p1", "x":200, "y":420, "color":"#00d2ff", "label":"YOU"},
@@ -164,7 +164,7 @@
     ]
   },
   {
-    "name": "12. Target the Net Player",
+    "name": "Target the Net Player",
     "tip": "Keep the net player honest by hitting a hard shot directly at them occasionally.",
     "positions": [
       {"id":"p1", "x":250, "y":520, "color":"#00d2ff", "label":"YOU"},
@@ -178,7 +178,7 @@
     ]
   },
   {
-    "name": "13. The Switch",
+    "name": "The Switch",
     "tip": "If a lob goes over your partner, cross over to cover their side while they move to yours.",
     "positions": [
       {"id":"p1", "x":100, "y":550, "color":"#00d2ff", "label":"YOU"},
@@ -193,7 +193,7 @@
     ]
   },
   {
-    "name": "14. Fake Poach",
+    "name": "Fake Poach",
     "tip": "Take a step toward the center to trick the returner, then stay in your alley.",
     "positions": [
       {"id":"p1", "x":230, "y":530, "color":"#00d2ff", "label":"SERVER"},
@@ -208,7 +208,7 @@
     ]
   },
   {
-    "name": "15. Shadowing the Ball",
+    "name": "Shadowing the Ball",
     "tip": "Move together like you are connected by a string. If the ball moves right, you both shift right.",
     "positions": [
       {"id":"p1", "x":300, "y":500, "color":"#00d2ff", "label":"BASE"},

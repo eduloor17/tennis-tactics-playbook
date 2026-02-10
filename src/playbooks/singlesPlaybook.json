@@ -1,6 +1,6 @@
 [
   {
-    "name": "1. Moonball Defense",
+    "name": "Moonball Defense",
     "tip": "Step into the court and hit early! Don't let the ball bounce high and push you back.",
     "positions": [
       {"id":"p1", "x":200, "y":420, "color":"#00d2ff", "label":"YOU"},
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "name": "2. Inside-Out Forehand",
+    "name": "Inside-Out Forehand",
     "tip": "Run around your backhand to dominate with your forehand. Aim for the opponent's backhand corner.",
     "positions": [
       {"id":"p1", "x":140, "y":510, "color":"#00d2ff", "label":"YOU"},
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "name": "3. The Battering Ram",
+    "name": "The Battering Ram",
     "tip": "Hit 3+ shots to the same deep corner to break their rhythm before switching direction.",
     "positions": [
       {"id":"p1", "x":280, "y":530, "color":"#00d2ff", "label":"YOU"},
@@ -39,7 +39,7 @@
     ]
   },
   {
-    "name": "4. Short Cross-Court Angle",
+    "name": "Short Cross-Court Angle",
     "tip": "Pull your opponent off the court with a short, angled shot. Accuracy over power.",
     "positions": [
       {"id":"p1", "x":360, "y":450, "color":"#00d2ff", "label":"YOU"},
@@ -52,7 +52,7 @@
     ]
   },
   {
-    "name": "5. Serve and Volley",
+    "name": "Serve and Volley",
     "tip": "Follow your serve to the net. Keep the first volley deep to maintain pressure.",
     "positions": [
       {"id":"p1", "x":200, "y":350, "color":"#00d2ff", "label":"YOU"},
@@ -65,7 +65,7 @@
     ]
   },
   {
-    "name": "6. Drop Shot and Lob",
+    "name": "Drop Shot and Lob",
     "tip": "Pull them in with a drop shot, then go over their head. Make them move vertically.",
     "positions": [
       {"id":"p1", "x":200, "y":450, "color":"#00d2ff", "label":"YOU"},
@@ -78,7 +78,7 @@
     ]
   },
   {
-    "name": "7. Wide Serve (Deuce)",
+    "name": "Wide Serve (Deuce)",
     "tip": "Pull the returner out of the alley. Hit your next shot to the wide-open Ad court.",
     "positions": [
       {"id":"p1", "x":220, "y":550, "color":"#00d2ff", "label":"YOU"},
@@ -91,7 +91,7 @@
     ]
   },
   {
-    "name": "8. T-Serve (Ad)",
+    "name": "T-Serve (Ad)",
     "tip": "Serve down the center T to jam the returner and take away their angles.",
     "positions": [
       {"id":"p1", "x":180, "y":550, "color":"#00d2ff", "label":"YOU"},
@@ -104,7 +104,7 @@
     ]
   },
   {
-    "name": "9. Down-the-Line Approach",
+    "name": "Down-the-Line Approach",
     "tip": "Hit your approach shot down the line. It's the safest way to close the net.",
     "positions": [
       {"id":"p1", "x":300, "y":350, "color":"#00d2ff", "label":"YOU"},
@@ -117,7 +117,7 @@
     ]
   },
   {
-    "name": "10. Defensive Slice",
+    "name": "Defensive Slice",
     "tip": "Use the slice to buy time and stay low. Recover to the center immediately.",
     "positions": [
       {"id":"p1", "x":380, "y":520, "color":"#00d2ff", "label":"YOU"},
@@ -130,7 +130,7 @@
     ]
   },
   {
-    "name": "11. Sneak Attack (SABR)",
+    "name": "Sneak Attack (SABR)",
     "tip": "Move in during the opponent's second serve toss. Catch them by surprise.",
     "positions": [
       {"id":"p1", "x":200, "y":320, "color":"#00d2ff", "label":"YOU"},
@@ -143,7 +143,7 @@
     ]
   },
   {
-    "name": "12. Wrong-Footing",
+    "name": "Wrong-Footing",
     "tip": "Hit the ball back to the same spot the opponent just vacated while they are running.",
     "positions": [
       {"id":"p1", "x":200, "y":500, "color":"#00d2ff", "label":"YOU"},
@@ -156,7 +156,7 @@
     ]
   },
   {
-    "name": "13. High Heavy Topspin",
+    "name": "High Heavy Topspin",
     "tip": "Push the opponent back with high clearance over the net and heavy spin.",
     "positions": [
       {"id":"p1", "x":200, "y":540, "color":"#00d2ff", "label":"YOU"},
@@ -169,7 +169,7 @@
     ]
   },
   {
-    "name": "14. Counter-Puncher",
+    "name": "Counter-Puncher",
     "tip": "Absorb the pace and redirect it cross-court. Wait for their mistake.",
     "positions": [
       {"id":"p1", "x":200, "y":560, "color":"#00d2ff", "label":"YOU"},
@@ -182,7 +182,7 @@
     ]
   },
   {
-    "name": "15. Mid-Court Putaway",
+    "name": "Mid-Court Putaway",
     "tip": "High to low swing. Don't over-hit, just find the corner on the short ball.",
     "positions": [
       {"id":"p1", "x":200, "y":280, "color":"#00d2ff", "label":"YOU"},
